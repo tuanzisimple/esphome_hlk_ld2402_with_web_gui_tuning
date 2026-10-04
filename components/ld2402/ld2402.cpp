@@ -797,13 +797,13 @@ void LD2402Component::handle_web_info_(AsyncWebServerRequest *request) {
     std::string json(buf);
     for (int i = 0; i < NUM_GATES; i++) {
         char tmp[32];
-        snprintf(tmp, sizeof(tmp), "%u%s",this->motion_thresholds_[i],i < NUM_GATES - 1 ? "," : "");
+        snprintf(tmp, sizeof(tmp), "%lu%s",static_cast<unsigned long>(this->motion_thresholds_[i]),i < NUM_GATES - 1 ? "," : "");
         json += tmp;
     }
     json += "],\"micro_th\":[";
     for (int i = 0; i < NUM_GATES; i++) {
         char tmp[32];
-        snprintf(tmp, sizeof(tmp), "%u%s",this->micro_thresholds_[i],i < NUM_GATES - 1 ? "," : "");
+        snprintf(tmp, sizeof(tmp), "%lu%s",static_cast<unsigned long>(this->micro_thresholds_[i]),i < NUM_GATES - 1 ? "," : "");
         json += tmp;
     }
     json += "],\"motion\":[";
